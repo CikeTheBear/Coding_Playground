@@ -10,46 +10,23 @@ int main() {
     int letraSecreta = 'm';
     int letraUsuario = '\n';
 
-    do {
-        letraUsuario = getchar();
-    }
+    while (vidas > 0 && fin == 0) {
 
-    while (vidas > 0 && fin == 0); {
-        printf("Adivina la letra secreta: ");
+        printf("\nAdivina la letra secreta: ");
         letraUsuario = getchar();
+        getchar(); // Consumir el salto de linea
 
         if (letraUsuario == letraSecreta) { //Ganar
-            printf("Has ganado!\n");
+            printf("\nHas ganado!\n");
             fin = 1;
         }
 
         else if (letraUsuario != letraSecreta) {
             vidas--;
-            printf("Fallaste, te quedan %d vidas\n", vidas); //Perder
+            printf("\nFallaste, te quedan %d vidas\n", vidas); //Perder
             if (vidas <= 0) {
-                printf("Has perdido!, la letra secreta era '%c'\n", letraSecreta);
+                printf("\nHas perdido!, la letra secreta era '%c'\n", letraSecreta);
             }
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
