@@ -1,0 +1,64 @@
+/* Estilo general de la página */
+body {
+    font-family: sans-serif; /* Letra moderna y legible */
+    background-color: #f0f2f5; /* Gris muy suave de fondo */
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    padding-top: 50px; /* Espacio arriba */
+}
+
+/* La tarjeta del simulador */
+.dice-roller {
+    background: white;
+    padding: 2rem; /* Espacio interno (la "gordura" de la caja) */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Sombra suave */
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column; /* Pone los inputs uno encima de otro */
+    gap: 15px; /* Espacio entre ellos */
+    margin-bottom: 20px;
+}
+
+input, button {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #007bff; /* Azul estándar */
+    color: white;
+    cursor: pointer; /* Manita al pasar el mouse */
+    border: none;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #0056b3; /* Azul más oscuro al pasar el mouse */
+}
+
+#resultsContainer {
+    display: flex;
+    flex-wrap: wrap; /* Si no caben, bajan a la siguiente línea */
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Estilo para CADA dado individual (los <p> que crea JS) */
+#resultsContainer p {
+    background-color: #e9ecef;
+    padding: 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    margin: 0; /* Quitamos el margen por defecto de los párrafos */
+    border: 2px solid #333;
+    min-width: 40px; /* Para que no se vean muy flacos */
+}
