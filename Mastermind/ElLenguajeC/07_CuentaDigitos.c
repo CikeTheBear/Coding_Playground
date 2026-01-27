@@ -21,7 +21,7 @@ int main () {
 
 
         printf("espacios en blanco: %d, otros: %d\n", nwhite, nother);
-        printf("digitos: %d/n", ndigit);
+        printf("digitos: %d\n", ndigit);
 
 
 
