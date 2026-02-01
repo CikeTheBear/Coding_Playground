@@ -10,23 +10,56 @@
 </head>
 
 <body>
-    <main class="dice-roller">
-        <div class="controls">
-            <label>
-                Cantidad de dados:
-                <input type="number" id="diceCount" value="1" min="1">
-            </label>
+    <div class="app-container">
+        
 
-            <label>
-                Caras del dado (d):
-                <input type="number" id="diceSides" value="20" min="2">
-            </label>
-        </div>
+        <section class="character-sheet">
+            <h1>RPG Companion</h1>
+            <h2>Ficha de Personaje</h2>
 
-        <button id="rollButton">Lanzar</button>
+            <div class="char-image-section">
+                <div id="imageDisplay" class="image-placeholder">
+                    Sin imagen
+                </div>
+                <input type="file" id="imageUpload" accept="image/*">
+            </div>
 
-        <div id="resultsContainer"></div>
-    </main>
+            <div class="char-info">
+                <label>Nombre: <input type="text" id="charName" placeholder="Ej: Gandalf"></label>
+                <label>Clase: <input type="text" id="charClass" placeholder="Ej: Mago"></label>
+                <label>Descripción: <textarea id="imagePrompt" placeholder="Describe tu personaje..."></textarea></label>
+            </div>
+
+            <div class="char-stats">
+                <h3>Estadísticas</h3>
+                <div class="stat-row">
+                    <label>Fuerza: <input type="number" id="statStr" class="stat-input" value="10"></label>
+                    <label>Destreza: <input type="number" id="statDex" class="stat-input" value="10"></label>
+                    <label>Inteligencia: <input type="number" id="statInt" class="stat-input" value="10"></label>
+                </div>
+            </div>
+        </section>
+
+        <section class="dice-roller">
+            <h2>Tirada de Dados</h2>
+
+            <div class="controls">
+                <label>
+                    Cantidad:
+                    <input type="number" id="diceCount" value="1" min="1">
+                </label>
+
+                <label>
+                    Caras (d):
+                    <input type="number" id="diceSides" value="20" min="2">
+                </label>
+            </div>
+
+            <button id="rollBtn">Lanzar</button>
+            <div id="resultsContainer"></div>
+        </section>
+
+    </div>
 </body>
 
 </html>

@@ -1,64 +1,167 @@
-/* Estilo general de la página */
+/* 1. RESET Y BASE */
 body {
-    font-family: sans-serif; /* Letra moderna y legible */
-    background-color: #f0f2f5; /* Gris muy suave de fondo */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5; /* Gris suave de fondo */
+    margin: 0;
+    padding: 20px;
     display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    padding-top: 50px; /* Espacio arriba */
+    justify-content: center; /* Centra todo en pantalla */
 }
 
-/* La tarjeta del simulador */
-.dice-roller {
-    background: white;
-    padding: 2rem; /* Espacio interno (la "gordura" de la caja) */
-    border-radius: 10px; /* Bordes redondeados */
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Sombra suave */
-    text-align: center;
-    max-width: 400px;
+/* 2. LAYOUT PRINCIPAL (Contenedor Padre) */
+.app-container {
+    display: flex;
+    gap: 20px;
+    max-width: 1000px;
     width: 100%;
+    flex-wrap: wrap; /* VITAL: Permite que baje a otra línea en móviles */
+    align-items: flex-start;
 }
 
-.controls {
-    display: flex;
-    flex-direction: column; /* Pone los inputs uno encima de otro */
-    gap: 15px; /* Espacio entre ellos */
-    margin-bottom: 20px;
+/* 3. ESTILO DE LAS TARJETAS (Común para Ficha y Dados) */
+.character-sheet, .dice-roller {
+    flex: 1; /* Ambas ocupan el mismo espacio */
+    min-width: 300px; /* Ancho mínimo antes de colapsar */
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-input, button {
+h2, h3 {
+    margin-top: 0;
+    color: #333;
+    border-bottom: 2px solid #f0f2f5;
+    padding-bottom: 10px;
+}
+
+/* 4. ELEMENTOS DE FORMULARIO (Inputs y Botones) */
+input, textarea, button {
+    width: 100%;
     padding: 10px;
-    font-size: 1rem;
+    margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    box-sizing: border-box; /* Evita que el padding rompa el diseño */
+    font-size: 1rem;
 }
 
+textarea {
+    resize: vertical; /* Solo permite cambiar altura */
+    min-height: 80px;
+    font-family: inherit;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #444;
+}
+
+/* Botones */
 button {
-    background-color: #007bff; /* Azul estándar */
+    background-color: #007bff;
     color: white;
-    cursor: pointer; /* Manita al pasar el mouse */
     border: none;
+    cursor: pointer;
     font-weight: bold;
+    transition: background 0.2s;
 }
 
 button:hover {
-    background-color: #0056b3; /* Azul más oscuro al pasar el mouse */
+    background-color: #0056b3;
+}
+
+/* 5. SECCIÓN ESPECÍFICA: Estadísticas (Fila de 3) */
+.stat-row {
+    display: flex;
+    gap: 10px;
+}
+
+.stat-input {
+    text-align: center;
+    font-weight: bold;
+}
+
+/* 7. SECCIÓN ESPECÍFICA: Resultados de Dados */
+.controls {
+    margin-bottom: 20px;
 }
 
 #resultsContainer {
     display: flex;
-    flex-wrap: wrap; /* Si no caben, bajan a la siguiente línea */
-    justify-content: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-top: 20px;
+    justify-content: center;
+    min-height: 50px; /* Evita saltos bruscos */
 }
 
-/* Estilo para CADA dado individual (los <p> que crea JS) */
+/* Los cuadritos de resultados */
 #resultsContainer p {
     background-color: #e9ecef;
     padding: 15px;
-    border-radius: 5px;
+    border-radius: 8px;
     font-weight: bold;
-    margin: 0; /* Quitamos el margen por defecto de los párrafos */
+    font-size: 1.5rem;
+    margin: 0;
     border: 2px solid #333;
-    min-width: 40px; /* Para que no se vean muy flacos */
+    min-width: 50px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Clase para cuando la imagen ya cargó */
+.character-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Recorta la imagen para llenar el cuadro sin deformarse */
+    border-radius: 5px;
+}
+
+/* Animación de carga (opcional pero elegante) */
+.loading-text {
+    animation: parpadeo 1s infinite;
+}
+
+@keyframes parpadeo {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* Separar el input de archivo de la imagen */
+#imageUpload {
+    margin-bottom: 15px;
+}
+
+/* Contenedor de la imagen */
+.image-placeholder {
+    width: 100%;
+    height: 250px; /* Altura fija */
+    background-color: #f8f9fa;
+    border: 2px dashed #ccc;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    overflow: hidden; /* IMPORTANTE: Corta lo que sobresalga */
+    margin-bottom: 10px;
+}
+
+/* La imagen en sí */
+.character-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Recorta la imagen para llenar el cuadro sin deformarse */
+    display: block;
+}
+
+/* Separar el botón de subir archivo */
+#imageUpload {
+    margin-bottom: 20px;
 }
